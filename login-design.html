@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/popper.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/sweetalert.min.js" type="text/javascript"></script>
+    <link rel="shortcut icon" href="images/icon.png" type="image/x-icon">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: NotoSansLao;
+        }
+        .popup-img{
+            margin-top: -60px !important;
+        }
+    </style>
+</head>
+
+<body class="log-body">
+
+    <div class="row">
+        <div class="col-lg-4 m-auto">
+            <div class="card px-4 bg-dark" style="margin-top: 150px;">
+                <div class="card-title text-center mt-3 popup-img">
+                    <img src="images/icon.svg" width="150px" height="150px" alt="">
+                    <h1 class="text-light">The Book Garden</h1>
+                </div>
+                <div class="card-body">
+                    <form action="">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user fa-2x"></i>
+                                </span>
+                            </div>
+                            <input type="text" name="" id="" class="form-control py-4" placeholder="Enter Username"
+                                required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-lock fa-2x"></i>
+                                </span>
+                            </div>
+                            <input type="password" name="password" id="password" class="form-control py-4" placeholder="Enter Password"
+                                required>
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <a id="show_password"><i class="fas fa-eye"></i></a>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center"><button class="btn btn-success" style="width:40%;">Login</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    
+        $(document).ready(function () {
+            $('#show_password').on('click', function () {
+                var passwordField = $('#password');
+                var passwordFieldType = passwordField.attr('type');
+                if (passwordField.val() != '') {
+                    if (passwordFieldType == 'password') {
+                        passwordField.attr('type', 'text');
+                        $(this).html('<i class="fas fa-eye-slash"></i>');
+                    } else {
+                        passwordField.attr('type', 'password');
+                        $(this).html('<i class="fas fa-eye"></i>');
+                    }
+                } else {
+                    swal("ແຈ້ງເຕືອນ", "ກະລຸນາປ້ອນລະຫັດຜ່ານ", "warning");
+                }
+            });
+        });
+    </script>
+    
+</body>
+
+</html>

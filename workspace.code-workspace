@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"path": "..\\Work_Shop"
+		},
+		{
+			"path": "..\\..\\..\\Users\\SPSH1\\Documents\\Sengphachanh\\Lesson Test HTML CSS JavaScript\\Learn by myself\\Dashboard"
+		},
+		{
+			"path": "..\\lessonPHP"
+		},
+		{
+			"path": "..\\..\\..\\Users\\SPSH1\\Documents\\Sengphachanh\\Lesson Test HTML CSS JavaScript\\Dashboard\\AdminLTE"
+		},
+		{
+			"path": "..\\..\\..\\Users\\SPSH1\\Documents\\Sengphachanh\\Coding\\Project"
+		},
+		{
+			"path": "..\\Book_Garden"
+		},
+		{
+			"path": "..\\..\\..\\Users\\SPSH1\\Documents\\Sengphachanh\\Coding\\Learn by myself"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "TheBookGarden"
+	}
+}
