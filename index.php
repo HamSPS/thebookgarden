@@ -47,9 +47,17 @@
                                             ?>
                                         </a>
                                         <a href="order-add.php" class="btn btn-success"><i class="fa fa-truck"></i>
-                                            ລາຍການສັ່ງຊື້ <span class="badge"
-                                                style="color: white; background-color: red;">0</span></a>
-                                        <a href="#" class="btn btn-warning"><i class="fa fa-upload"></i> ການນຳເຂົ້າ</a>
+                                            ລາຍການສັ່ງຊື້
+                                            <?php 
+                                            $sql = "SELECT * FROM tbpurchase WHERE sts_id != 4";
+                                            $result = mysqli_query($con, $sql);
+                                            $row = mysqli_num_rows($result);
+                                            
+                                            echo '<span class="badge" style="color: white; background-color: red;">'.$row.'</span>';
+                                            ?>
+                                        </a>
+                                        <a href="import.php" class="btn btn-warning"><i class="fa fa-upload"></i>
+                                            ການນຳເຂົ້າ</a>
                                     </div>
                                     <hr>
                                     <hr>

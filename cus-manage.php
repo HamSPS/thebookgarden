@@ -11,7 +11,8 @@
 
         <div class="m-3">
             <a href="cus-add.php" class="btn btn-info"><i class="fas fa-plus-circle"></i> ເພີ່ມຂໍ້ມູນ</a> &nbsp; &nbsp;
-            <a href="#" class="btn btn-info"><i class="fas fa-print"></i> ພິມລາຍງານ</a>
+            <a href="report/cus-report-print.php" class="btn btn-info" target="_black"><i class="fas fa-print"></i>
+                ພິມລາຍງານ</a>
         </div>
 
         <div class="table-responsive">
