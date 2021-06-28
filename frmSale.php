@@ -62,67 +62,77 @@
     <link rel="shortcut icon" href="images/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/all.min.lte.css">
     <title>The Book Garden</title>
-    
-    
+
+
     <script src="js/sweetalert.min.js"></script>
     <style>
-        body{
-            font-family: NotoSansLao;
-        }
-        table{
-            font-size: 15px;
-        }
-        .fit-image{
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
+    body {
+        font-family: NotoSansLao;
+    }
+
+    table {
+        font-size: 15px;
+    }
+
+    .fit-image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
     </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
 
     <div class="wrapper">
-<?php 
+        <?php 
      include 'menu.php';
 ?>
-     
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-8">
-                <h4>ສະແດງໜັງສື</h4>
-                <div class="form-row">
-                    <div class="col-md-4">
-                        <form action="" method="get" class="form-inline">
-                            <label>
-                                <input type="text" name="term" class="form-control" id="term" placeholder="ຄົ້ນຫາໜັງສືຈາກຊື່ໜັງສື" value="<?= @$term ?>">
-                                <input type="submit" name="src" class="btn btn-success ml-2" value="ຄົ້ນຫາ">
-                            </label>
-                        </form>
-                    </div>
-                     <div class="col-md-5">
-                         <form method="get" class="form-inline">
-                                <label id="cat" class="my-1 mr-2">ເລືອກປະເພດ : </label>
-                                <select class="form-control" style="width: 150px;" id="cat" name="cat" onchange="form.submit()">
-                                    <option value="">ເລືອກປະເພດ</option>
-                                    <?php
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-8">
+                        <h4>ສະແດງໜັງສື</h4>
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <form action="" method="get" class="form-inline">
+                                    <label>
+                                        <input type="text" name="term" class="form-control" id="term"
+                                            placeholder="ຄົ້ນຫາໜັງສືຈາກຊື່ໜັງສື" value="<?= @$term ?>">
+                                        <input type="submit" name="src" class="btn btn-success ml-2" value="ຄົ້ນຫາ">
+                                    </label>
+                                </form>
+                            </div>
+                            <div class="col-md-5">
+                                <form method="get" class="form-inline">
+                                    <label id="cat" class="my-1 mr-2">ເລືອກປະເພດ : </label>
+                                    <select class="form-control" style="width: 150px;" id="cat" name="cat"
+                                        onchange="form.submit()">
+                                        <option value="">ເລືອກປະເພດ</option>
+                                        <?php
                                     $sql = "SELECT * FROM tbcategory";
                                     $result = mysqli_query($con, $sql);
                                     while ($row = mysqli_fetch_assoc($result)) {
                                         ?>
-                                        <option value="<?= $row['catID'] ?>" <?php if ($row['catID'] == @$category) echo "selected"; ?>><?= $row['catName'] ?></option>
+                                        <option value="<?= $row['catID'] ?>"
+                                            <?php if ($row['catID'] == @$category) echo "selected"; ?>>
+                                            <?= $row['catName'] ?></option>
                                         <?php
                                     }
                                     ?>
-                                </select>
-                                
-                                
-                        </form>
-                     </div>
-                </div>
-                <div class="row mt-5">
-                        <?php
+                                    </select>
+
+
+                                </form>
+                            </div>
+                            <div class="text-right"><a href="sale_show.php" class="btn btn-secondary"><i
+                                        class="fas fa-receipt"></i>
+                                    ສະແດງປະຫວັດການຂາຍ</a>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <?php
                             //  if (empty($category)) {
                             //      $sql = "SELECT * FROM tbbook order by bkid DESC";
                             //  }else{
@@ -143,7 +153,7 @@
                         ?>
                             <div class="col-12 col-sm-3">
                                 <div class="card card-product-grid">
-                                    
+
                                     <img class="card-img-top fit-image" src="<?= $row['img'] ?>" alt="ຮູບໜັງສ່">
                                     <div class="card-body">
                                         <p><u>ຊື່ໜັງສື:</u> <?= $row['BkName'] ?></p>
@@ -152,8 +162,8 @@
                                         <input type="hidden" name="hidden_name" value="<?= $row['bkName'] ?>">
                                         <input type="hidden" name="hidden_price" value="<?= $row['price'] ?>">
                                         <!-- <input type="submit" name="add" class="btn btn-success" form-control value="ເພີ່ນສິນຄ້າ"> -->
-                                         <!-- <a href="frmSale.php?b_id=<?= $row['bkID'] ?>&act=add" class="btn btn-success"><i class="fas fa-shopping-cart"></i> ເພີ່ມສິນຄ້າ</a> -->
-                                         <?php
+                                        <!-- <a href="frmSale.php?b_id=<?= $row['bkID'] ?>&act=add" class="btn btn-success"><i class="fas fa-shopping-cart"></i> ເພີ່ມສິນຄ້າ</a> -->
+                                        <?php
                                         if ($row['stock'] == 0 || $row['stock'] < 0) {
                                             echo '<div class="ribbon ribbon-top-left"><span>ສິນຄ້າໜົດ</span></div>';
                                             echo '<input type="submit" value="ສິນຄ້າໝົດ" class="btn btn-danger" disabled>';
@@ -162,31 +172,31 @@
                                         }
                                         ?>
                                         <!-- <a href="frmSale.php?b_id=<?= $row["Bkid"] ?>&act=add" class="btn btn-success"><i class="fas fa-shopping-cart" style="color: green"></i> ເພີ່ມສິນຄ້າ</a> -->
-                                         
+
                                     </div>
                                 </div>
                             </div>
-                        <?php }
+                            <?php }
 
                         ?>
                         </div>
-            </div>
-            <div class="col-md-4" style="background-color: #d2d9d6;">
-                <h4 class="mt-3">ລາຍການສັ່ງຊື້</h4>
-                <form action="?act=update" method="post" name="frmCart" id="frmCart">
-                <table class="table table-hover">
-                    <thead align="center" style="background: #EAEAEA;">
-                            <tr>
-                                <th><strong>No.</strong></th>
-                                <th><strong>ສິນຄ້າ</strong></th>
-                                <th><strong>ລາຄາ</strong></th>
-                                <th><strong>ຈຳນວນ</strong></th>
-                                <th><strong>ລວມ</strong></th>
-                                <th><strong>ລົບ</strong></th>
-                            </tr>
-                    </thead>
-                    <tbody>
-                    <?php 
+                    </div>
+                    <div class="col-md-4" style="background-color: #d2d9d6;">
+                        <h4 class="mt-3">ລາຍການສັ່ງຊື້</h4>
+                        <form action="?act=update" method="post" name="frmCart" id="frmCart">
+                            <table class="table table-hover">
+                                <thead align="center" style="background: #EAEAEA;">
+                                    <tr>
+                                        <th><strong>No.</strong></th>
+                                        <th><strong>ສິນຄ້າ</strong></th>
+                                        <th><strong>ລາຄາ</strong></th>
+                                        <th><strong>ຈຳນວນ</strong></th>
+                                        <th><strong>ລວມ</strong></th>
+                                        <th><strong>ລົບ</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php 
                         $total = 0;
                         $i = 0;
                         if (!empty($_SESSION['cart'])) {
@@ -199,23 +209,26 @@
                                 $total += $sum; //ລວມລາຄາສິນຄ້າ
                                 $max = $row['stock'];
                     ?>
-                            <tr>
-                                <td><?= $i ?>.</td>
-                                <td><?= $row['BkName'] ?></td>
-                                <td><?= number_format($row['price'], 2) ?> ກີບ</td>
-                                <td align="center"><?php echo "<input type='number' name='amount[$b_id]' value='$qty' max='$max' min='1' style='width:50px;'/>" ?></td>
-                                <td><?= number_format($sum,2) ?> ກີບ</td>
-                                <td align="center"><a href="frmSale.php?b_id=<?= $b_id ?>&act=remove" class="btn btn-danger"><i class="fas fa-trash"></i> ລົບ</a></td>
-                            </tr>
-                            <?php 
+                                    <tr>
+                                        <td><?= $i ?>.</td>
+                                        <td><?= $row['BkName'] ?></td>
+                                        <td><?= number_format($row['price'], 2) ?> ກີບ</td>
+                                        <td align="center">
+                                            <?php echo "<input type='number' name='amount[$b_id]' value='$qty' max='$max' min='1' style='width:50px;'/>" ?>
+                                        </td>
+                                        <td><?= number_format($sum,2) ?> ກີບ</td>
+                                        <td align="center"><a href="frmSale.php?b_id=<?= $b_id ?>&act=remove"
+                                                class="btn btn-danger"><i class="fas fa-trash"></i> ລົບ</a></td>
+                                    </tr>
+                                    <?php 
                             
                         }
                             ?>
-                            <tr style="background:#e0d0d0;">
-                                <td colspan="5" align="right">ລາຄາລວມ:</td>
-                                <td style="width: 150px;"><?= number_format($total, 2) ?> ກີບ</td>
-                            </tr>
-                            <?php 
+                                    <tr style="background:#e0d0d0;">
+                                        <td colspan="5" align="right">ລາຄາລວມ:</td>
+                                        <td style="width: 150px;"><?= number_format($total, 2) ?> ກີບ</td>
+                                    </tr>
+                                    <?php 
                             
                     }else{
                         echo '<tr style="background: #e0d0d0;">';
@@ -223,12 +236,12 @@
                         echo '</tr>';
                     }
                             ?>
-                    </tbody>
-                </table>
-                <div class="text-right">
-                    <!-- <input type="button" value="ສັ່ງຊື້" name="btnSale" id="btnSale" onclick="window.location='Sale_confirm.php'" class="btn btn-primary"> -->
-                    <!-- <button class="btn btn-primary" name="btnSale" onclick="window.location='Sale_confirm.php'"><i class="fas fa-shopping-cart"></i> ສັ່ງຊື້</button> -->
-                    <?php
+                                </tbody>
+                            </table>
+                            <div class="text-right">
+                                <!-- <input type="button" value="ສັ່ງຊື້" name="btnSale" id="btnSale" onclick="window.location='Sale_confirm.php'" class="btn btn-primary"> -->
+                                <!-- <button class="btn btn-primary" name="btnSale" onclick="window.location='Sale_confirm.php'"><i class="fas fa-shopping-cart"></i> ສັ່ງຊື້</button> -->
+                                <?php
                         if (!empty($_SESSION['cart'])) {
                             echo "<input type=\"button\" name=\"btnCancel\" value=\"ຍັກເລີກລາຍການສັ່ງຊື້\" onclick=\"window.location='frmSale.php?act=cancel'\" class=\"btn btn-danger\">";
                             echo ' | ';
@@ -237,14 +250,14 @@
                             echo '<a href="Sale_confirm.php" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> ສັ່ງຊື້</a>';
                         }
                     ?>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                </form>
             </div>
         </div>
-    </div>
-</div>
 
-<?php 
+        <?php 
     include 'footer.php';
 ?>
 
@@ -252,4 +265,3 @@
 </body>
 
 </html>
-

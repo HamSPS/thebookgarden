@@ -26,23 +26,23 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <title>ໃບບິນສິນຄ້າ</title>
     <style>
-        body {
-            font-family: NotoSansLao;
-        }
+    body {
+        font-family: NotoSansLao;
+    }
 
-        .background {
-            background: url("../images/bill-background.png");
-            background-size: cover;
-            /* background-attachment: fixed; */
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            opacity: 20%;
-        }
+    .background {
+        background: url("../images/bill-background.png");
+        background-size: cover;
+        /* background-attachment: fixed; */
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        opacity: 20%;
+    }
 
-        p {
-            font-size: larger;
-        }
+    p {
+        font-size: larger;
+    }
     </style>
 </head>
 
@@ -146,19 +146,18 @@
 </html>
 
 <script>
-
-    //print on load
-   function myPrint(){
-       newwin = window.print();
-        // newwin.close()
-       var prt = 1;
+//print on load
+function myPrint() {
+    newwin = window.print();
+    // newwin.close()
+    var prt = 1;
     //    newwin.print();
-        if(prt == 1 ){
-            // alert("ບັນທຶກຂໍ້ມູນສຳເລັດ");
-            swal("ສຳເລັດ", "ບັນທຶກຂໍ້ມູນສຳເລັດແລ້ວ", "success").then(function(){
-                window.location = "../frmSale.php"
-            })
-            // setTimeout(function(){location.href="../frmSale.php"} , 5000);
-        }
+    if (prt == 1) {
+        // alert("ບັນທຶກຂໍ້ມູນສຳເລັດ");
+        swal("ສຳເລັດ", "ບັນທຶກຂໍ້ມູນສຳເລັດແລ້ວ", "success").then(function() {
+            window.location = "../frmSale.php"
+        })
+        // setTimeout(function(){location.href="../frmSale.php"} , 5000);
     }
+}
 </script>

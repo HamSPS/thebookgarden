@@ -5,6 +5,11 @@
         $start = $_POST['start'];
         $end = $_POST['end'];
     }
+
+    @$act = $_GET['act'];
+    if ($act == 'cancel') {
+        unset($_SESSION['import']);
+    }
     include 'menu.php';
 ?>
 
@@ -29,7 +34,7 @@
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="table-responsive">
+                        <div class="table-responsive mt-3">
                             <table class="table table-bordered table-hover" id="example">
                                 <thead class="table-success text-center">
                                     <tr>
@@ -70,7 +75,7 @@
                                         <td><?= $row['pdate'] ?></td>
                                         <td><?= $row['sup_name'] ?></td>
                                         <td>
-                                            <a href="import-confirm.php?pcid=<?= $row['pcid'] ?>"
+                                            <a href="import-confirm.php?pcid=<?= $row['pcid'] ?>&act=add"
                                                 class="btn btn-outline-info"><i class="fa fa-download"></i> ນຳເຂົ້າ</a>
                                         </td>
                                     </tr>
@@ -83,20 +88,19 @@
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover">
-                                <form action="" method="post" id="frmSearch">
-                                    <div class="col-md-5 d-flex my-3">
-                                        <input type="date" name="start" id="start" value="<?= @$start ?>"
-                                            class="form-control">
-                                        <input type="date" name="end" id="end" value="<?= @$end ?>"
-                                            class="form-control">
-                                        <button type="submit" name="search" class="btn btn-success "><i
-                                                class="fas fa-search"></i></button>
-                                    </div>
-                                </form>
+                            <form action="" method="post" id="frmSearch">
+                                <div class="col-md-5 d-flex my-3">
+                                    <input type="date" name="start" id="start" value="<?= @$start ?>"
+                                        class="form-control">
+                                    <input type="date" name="end" id="end" value="<?= @$end ?>" class="form-control">
+                                    <button type="submit" name="search" class="btn btn-success "><i
+                                            class="fas fa-search"></i></button>
+                                </div>
+                            </form>
+                            <table class="table table-bordered table-hover" id="show">
                                 <thead class="table-success text-center">
                                     <tr>
-                                        <th>ລຳດັບ</th>
+                                        <th style="width: 15px">ລຳດັບ</th>
                                         <th>ລະຫັດ</th>
                                         <th>ວັນທີນຳເຂົ້າ</th>
                                         <th>ນຳເຂົ້າໂດຍ</th>
@@ -107,8 +111,9 @@
                                 </thead>
                                 <tbody>
                                     <?php
+                                    $sql = "";
                                     if (!empty($start) && !empty($end)) {
-                                        $sql = "SELECT impid,imp_date,st.stid,FirstName,LastName FROM tbimport im INNER JOIN tbstaff st ON im.stid = st.stid WHERE imp_date >= '$start' AND imp_date <= '$end'";
+                                        $sql = "SELECT impid,imp_date,st.stid,FirstName,LastName FROM tbimport im INNER JOIN tbstaff st ON im.stid = st.stid WHERE imp_date BETWEEN '$start' AND '$end'";
                                     }else{
                                         $sql = "SELECT impid,imp_date,st.stid,FirstName,LastName FROM tbimport im INNER JOIN tbstaff st ON im.stid = st.stid";
                                     }
@@ -174,6 +179,11 @@ $("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
 // on load of the page: switch to the currently selected tab
 var hash = window.location.hash;
 $('#myTab a[href="' + hash + '"]').tab('show');
+
+$(document).ready(function() {
+    $('#show').DataTable();
+    $('[data-toggle="tooltip"]').tooltip();
+});
 </script>
 </body>
 

@@ -1,7 +1,6 @@
 <?php
      include 'check-login.php';
      
-     echo $_SESSION['cusName'];
     // ບັນທຶກການຈອງ
     if (isset($_POST['confirm'])) {
         mysqli_query($con, "BEGIN");
@@ -99,107 +98,119 @@
     <link rel="shortcut icon" href="images/icon.svg" type="image/x-icon">
     <link rel="stylesheet" href="css/all.min.lte.css">
     <title>Book Garden</title>
-    
-    
+
+
     <script src="js/sweetalert.min.js"></script>
     <style>
-        body{
-            font-family: NotoSansLao;
-        }
-        .fit-image{
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-        .box-change{
-            display: inline-block;
-            width: 64%;
-            background: #58c8be;
-            color: #fff;
-            border-radius: 10px;
-            padding: 5px 15px;
-        }
-        .bill-background{
-            background: #d2d9d6;
+    body {
+        font-family: NotoSansLao;
+    }
 
-        }
-        .background {
-            background: url("images/bill-background.png");
-            background-size: cover;
-            /* background-attachment: fixed; */
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            opacity: 20%;
-        }
+    .fit-image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
+
+    .box-change {
+        display: inline-block;
+        width: 64%;
+        background: #58c8be;
+        color: #fff;
+        border-radius: 10px;
+        padding: 5px 15px;
+    }
+
+    .bill-background {
+        background: #d2d9d6;
+
+    }
+
+    .background {
+        background: url("images/bill-background.png");
+        background-size: cover;
+        /* background-attachment: fixed; */
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        opacity: 20%;
+    }
     </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
 
     <div class="wrapper">
-<?php 
+        <?php 
      include 'menu.php';
 ?>
-<div class="content">
-    <?= @$msg ?>
-<div class="background"></div>
-    <div class="container-fluid" style="background:white;height:100%;">
-        <div class="row mx-auto d-block">
-            <div class="col-md-12">
-                <form action="" method="post" name="frmCart" id="frmCart">
-                <div class="row">
-                    <div class="col-md-8 bill-background">
+        <div class="content">
+            <?= @$msg ?>
+            <div class="background"></div>
+            <div class="container-fluid" style="background:white;height:100%;">
+                <div class="row mx-auto d-block">
+                    <div class="col-md-12">
+                        <form action="" method="post" name="frmCart" id="frmCart">
+                            <div class="row">
+                                <div class="col-md-8 bill-background">
 
-                        <div class="row ml-5">
-                            <div class="col-md-10">
-                                <img src="images/icon.svg" class="mx-auto d-block m-4 img-circle" width="150px" alt="ຮ້ານ The Book Garden">
-                                <h1 class="text-center">ລາຍການສັ່ງຈອງ</h1>
-                            </div>
-                                <div class="col-md-10">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="rsID">ລະຫັດການຈອງ</label>
-                                                <input class="form-control" type="text" id="rsID" name="rsID" value="<?= $autoID ?>" placeholder="ກະລຸນາປ້ອນລະຫັດ" required="" readonly="">
-                                            </div>
+                                    <div class="row ml-5">
+                                        <div class="col-md-10">
+                                            <img src="images/icon.svg" class="mx-auto d-block m-4 img-circle"
+                                                width="150px" alt="ຮ້ານ The Book Garden">
+                                            <h1 class="text-center">ລາຍການສັ່ງຈອງ</h1>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="rdate">ວັນ, ເດືອນ, ປີ</label>
-                                                <input class="form-control" type="datetime" id="rdate" name="rdate" value="<?= $date ?>" required="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="stName">ຊື່ພະນັກງານ</label>
-                                                <input class="form-control" type="hidden" id="stid" name="stid" value="<?= $_SESSION['empID'] ?>" readonly="">
-                                                <input class="form-control" type="text" id="stName" name="stName" value="<?= $_SESSION['name'] ?>" readonly="">
-                                            </div>
-                                        </div>
-                                            
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="cusName">ລູກຄ້າ</label>
-                                                <input type="text" class="form-control" name="cusName" id="cusName" value="<?= $_SESSION['cusName'] ?>">
-                                                <input type="hidden" name="cusid" id="cusid" value="<?= $_SESSION['cusID'] ?>">
+                                        <div class="col-md-10">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="rsID">ລະຫັດການຈອງ</label>
+                                                        <input class="form-control" type="text" id="rsID" name="rsID"
+                                                            value="<?= $autoID ?>" placeholder="ກະລຸນາປ້ອນລະຫັດ"
+                                                            required="" readonly="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="rdate">ວັນ, ເດືອນ, ປີ</label>
+                                                        <input class="form-control" type="datetime" id="rdate"
+                                                            name="rdate" value="<?= $date ?>" required="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="stName">ຊື່ພະນັກງານ</label>
+                                                        <input class="form-control" type="hidden" id="stid" name="stid"
+                                                            value="<?= $_SESSION['empID'] ?>" readonly="">
+                                                        <input class="form-control" type="text" id="stName"
+                                                            name="stName" value="<?= $_SESSION['name'] ?>" readonly="">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="cusName">ລູກຄ້າ</label>
+                                                        <input type="text" class="form-control" name="cusName"
+                                                            id="cusName" value="<?= $_SESSION['cusName'] ?>">
+                                                        <input type="hidden" name="cusid" id="cusid"
+                                                            value="<?= $_SESSION['cusID'] ?>">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                            </div>
-                        </div>
-                        <table class="table table-hover">
-                            <thead align="center" style="background: #EAEAEA;">
-                                    <tr>
-                                        <th><strong>No.</strong></th>
-                                        <th><strong>ສິນຄ້າ</strong></th>
-                                        <th><strong>ລາຄາ</strong></th>
-                                        <th><strong>ຈຳນວນ</strong></th>
-                                        <th><strong>ລວມ</strong></th>
-                                    </tr>
-                            </thead>
-                            <tbody>
-                            <?php 
+                                    <table class="table table-hover">
+                                        <thead align="center" style="background: #EAEAEA;">
+                                            <tr>
+                                                <th><strong>No.</strong></th>
+                                                <th><strong>ສິນຄ້າ</strong></th>
+                                                <th><strong>ລາຄາ</strong></th>
+                                                <th><strong>ຈຳນວນ</strong></th>
+                                                <th><strong>ລວມ</strong></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
                                 $total = 0;
                                 $i = 0;
                                 if (!empty($_SESSION['rev'])) {
@@ -211,22 +222,22 @@
                                         $sum = $row['price'] * $qty; //ເອົາລາຄາສິນຄ້າມາຄູນຈຳນວນສິນຄ້າ
                                         $total += $sum; //ລວມລາຄາສິນຄ້າ
                             ?>
-                                    <tr>
-                                        <td><?= $i ?>.</td>
-                                        <td><?= $row['BkName'] ?></td>
-                                        <td align="right"><?= number_format($row['price'], 2) ?> ກີບ</td>
-                                        <td align="center"><?= $qty ?></td>
-                                        <td align="right"><?= number_format($sum,2) ?> ກີບ</td>
-                                    </tr>
-                                    <?php 
+                                            <tr>
+                                                <td><?= $i ?>.</td>
+                                                <td><?= $row['BkName'] ?></td>
+                                                <td align="right"><?= number_format($row['price'], 2) ?> ກີບ</td>
+                                                <td align="center"><?= $qty ?></td>
+                                                <td align="right"><?= number_format($sum,2) ?> ກີບ</td>
+                                            </tr>
+                                            <?php 
                                     
                                 }
                                     ?>
-                                    <tr style="background:#e0d0d0;">
-                                        <td colspan="4" align="right">ລາຄາລວມ:</td>
-                                        <td align="right"><?= number_format($total, 2) ?> ກີບ</td>
-                                    </tr>
-                                    <?php 
+                                            <tr style="background:#e0d0d0;">
+                                                <td colspan="4" align="right">ລາຄາລວມ:</td>
+                                                <td align="right"><?= number_format($total, 2) ?> ກີບ</td>
+                                            </tr>
+                                            <?php 
                                     
                             }else{
                                 echo '<tr style="background: #e0d0d0;">';
@@ -234,14 +245,15 @@
                                 echo '</tr>';
                             }
                                     ?>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-md-4">
-                        <h1 class="text-center">ອັດຕາແລກປ່ຽນ</h1>
-                            <h3>ເງິນກີບ: <span class="box-change" id="change"><?= number_format($total,2) ?></span> ກີບ</h3>
-                            
-                            <?php
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-4">
+                                    <h1 class="text-center">ອັດຕາແລກປ່ຽນ</h1>
+                                    <h3>ເງິນກີບ: <span class="box-change"
+                                            id="change"><?= number_format($total,2) ?></span> ກີບ</h3>
+
+                                    <?php
                                 $sel = "SELECT * FROM tbcurrency";
                                 $result = mysqli_query($con, $sel) or die ("Error in query: $sel". mysqli_error($sel));
                                 while($row = mysqli_fetch_array($result)){
@@ -251,42 +263,43 @@
                                 }
                             ?>
 
-                        <input type="hidden" name="total" id="total" value="<?= $total ?>">
-                        <input type="submit" value="ບັນທຶກການຈອງ" name="confirm" id="confirm" class="form-control btn btn-primary"><br><br>
-                        <a href="reserv_add.php" class="form-control btn btn-danger">ກັບຄືນ</a>
+                                    <input type="hidden" name="total" id="total" value="<?= $total ?>">
+                                    <input type="submit" value="ບັນທຶກການຈອງ" name="confirm" id="confirm"
+                                        class="form-control btn btn-primary"><br><br>
+                                    <a href="reserv_add.php" class="form-control btn btn-danger">ກັບຄືນ</a>
+                                </div>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
-
-            </form>
-        </div>
-    </div>
-</div>
+            </div>
 
 
-<?php 
+            <?php 
     include 'footer.php';
 ?>
-<script>
-    // function myPrint(frmCart){
-    //     var printdata = document.getElementById(frmCart)
-    //     newwin = window.open("");
-    //     newwin.document.write(printdata.outerHTML)
-    //     newwin.print();
-    //     newwin.close();
-    // }
-    //check price
-    // function stopChange(){
-    //     var pay=document.getElementById("pay").value;
-    //     var total=document.getElementById("total").value;
+            <script>
+            // function myPrint(frmCart){
+            //     var printdata = document.getElementById(frmCart)
+            //     newwin = window.open("");
+            //     newwin.document.write(printdata.outerHTML)
+            //     newwin.print();
+            //     newwin.close();
+            // }
+            //check price
+            // function stopChange(){
+            //     var pay=document.getElementById("pay").value;
+            //     var total=document.getElementById("total").value;
 
-    //     if(pay == 0 || pay < total){
-    //         swal("ພິດພາດ", "ກະລຸນາປ້ອນຈຳນວນເງິນ", "error");
-    //         event.preventDefault();
-    //         return false;
-    //     }
-    //     return true;
-    // }
-</script>
+            //     if(pay == 0 || pay < total){
+            //         swal("ພິດພາດ", "ກະລຸນາປ້ອນຈຳນວນເງິນ", "error");
+            //         event.preventDefault();
+            //         return false;
+            //     }
+            //     return true;
+            // }
+            </script>
 
 
 </body>

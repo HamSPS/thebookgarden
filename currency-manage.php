@@ -75,12 +75,11 @@
                         <td><?= $row[3] ?></td>
                         <td align="center" width="200px">
                             <a href="#" data-toggle="modal" data-target="#modalUpdate"
-                                class="btn btn-outline-primary btn_update"><i class="fas fa-edit"></i> ແກ້ໄຂ</a>
+                                class="btn btn-outline-success btn_update"><i class="fas fa-edit"></i></a>
                             |
                             <a href="#" onclick="deletedata('<?= $row[0] ?>')" data-toggle="tooltip"
                                 data-placement="left" title="ລືບ" class="btn btn-outline-danger"><i
-                                    class="fas fa-trash-alt"></i>
-                                ລົບ</a>
+                                    class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                     <?php } ?>
@@ -95,7 +94,7 @@
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header alert alert-primary">
                     <h5 class="modal-title" id="modalAddLabel">ເພີ່ມຂໍ້ມູນອັດຕາແລກປ່ຽນ</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -140,14 +139,14 @@
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header alert alert-success">
                     <h5 class="modal-title" id="modalUpdateLabel">ແກ້ໄຂຂໍ້ມູນອັດຕາແລກປ່ຽນ</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="" name="cur_id" id="cur_id">
+                    <input type="hidden" name="cur_id" id="cur_id">
                     <div class="col-md-12 mb-3">
                         <label for="cur_name_update">ສະກຸນເງິນ</label>
                         <input type="text" class="form-control" name="cur_name_update" id="cur_name_update"
@@ -234,6 +233,26 @@ $('.btn_update').on('click', function() {
 });
 </script>
 
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+    'use strict';
+    window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
+</script>
 </body>
 
 </html>

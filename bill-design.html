@@ -23,30 +23,47 @@
             opacity: 20%;
         }
         
-        p {
-            font-size: larger;
+        .card {
+            background: url("images/card-background.png");
+            background-size: cover;
+        }
+        
+        .img-width {
+            width: 130px;
+            height: 150px;
+            object-fit: cover;
+            margin-top: 0;
         }
     </style>
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-md-4 m-auto">
-            <div class="card">
-                <div class="card-header alert alert-info">
-                    <h4>ບັດສະມາຊິກ</h4>
+    <div class="card mx-auto my-5" style="max-width: 485px;max-height: 320px;">
+        <div class="card-header alert alert-info d-flex" style="margin: 0;">
+            <img src="images/icon.svg" class="img-circle text-right mr-3" style="width: 45px;" alt="">
+
+            <h4 class="text-center">
+                ບັດສະມາຊິກ
+            </h4>
+        </div>
+        <div class="card-body">
+            <div class="d-flex">
+                <div class="mr-4">
+                    <img src="images/customer/1623437512167958493_315476413329058_5095038716652994874_n.jpg" class="img-width" alt="">
+                </div>
+
+                <div>
+                    <h5 class="card-title">ຊື່: ນາງ ປ໋ອກກີ້ ທິບພາພອນ</h5>
+                    <p class="card-text">ລະຫັດສະມາຊິກ:​ CS001</p>
+                    <p class="card-text">ວັນເດືອນປີເກີດ: ​11/08/1999</p>
+                    <p class="card-text">ທີ່ຢູ່: ບ້ານວັດໄຕ ເມືອງສີໂຄດ</p>
                 </div>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="images/user.jpg" width="100px" alt="">
-                    </div>
-                    <div class="col-md-8">
-                        <p>ຊື່ ແລະ ນາມສະກຸນ: ນາງ ປ໋ອກກີ້ ທິບພາພອນ</p>
-                    </div>
-                </div>
-            </div>
+        </div>
+        <div class="card-footer alert alert-info" style="margin-bottom: 0;">
+            <i class="fas fa-phone"></i> ເບີໂທ: 020 9999 9999 &nbsp; &nbsp;
+            <i class="fas fa-envelope"></i> ອີເມວ: thebookgarden@gmail.com<br/>
+            <i class="fab fa-facebook"></i> Facebook: The Book Garden
         </div>
     </div>
 </body>
