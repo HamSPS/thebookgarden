@@ -1,0 +1,30 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+#RewriteRule ^([^\.]+)$ $1.php [Nc,L]
+#RewriteRule ^([^\.]+)$ $1.html [Nc,L]
+#RewriteRule ^([^\.]+)$ $1.js [Nc,L]
+#RewriteRule ^([^\.]+)$ $1.css [Nc,L]
+#ErrorDocument 400 /health_checkup/404/error.php
+#ErrorDocument 401 /health_checkup/404/error.php
+#ErrorDocument 403 /health_checkup/404/error.php
+ErrorDocument 404 /health_checkup/404/error.php
+#ErrorDocument 500 /health_checkup/404/error.php
+#ErrorDocument 502 /health_checkup/404/error.php
+#ErrorDocument 400 http://localhost/health_checkup/404/404
+#ErrorDocument 401 http://localhost/health_checkup/404/404
+#ErrorDocument 403 http://localhost/health_checkup/404/404
+#ErrorDocument 404 http://localhost/health_checkup/404/404
+#ErrorDocument 500 http://localhost/health_checkup/404/404
+#ErrorDocument 502 http://localhost/health_checkup/404/404
+
+
+RewriteRule ^/?$ index.php
+RewriteRule ^index?$ index.php
+RewriteRule ^Login?$ login-form.php
+RewriteRule ^User/Register/register?$ User/Register/register.php
+RewriteRule ^User/Company/Company?$ User/Company/Company.php
+RewriteRule ^User/Package/Package?$ User/Package/Package.php
+RewriteRule ^User/Employee/Employee?$ User/Employee/Employee.php
+
