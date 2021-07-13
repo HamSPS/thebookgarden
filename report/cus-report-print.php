@@ -1,87 +1,155 @@
 <?php 
     include '../connectdb.php';
     include '../check-login.php';
+    
+    $content = '';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <title>ລາຍງານຂໍ້ມູນພະນັກງານ</title>
-    <style>
-        body{
-            font-family: NotoSansLao;
-        }
-        p{
-            font-size: larger;
-        }
-        .myrow{
-            display:grid;
-            grid-template-columns: 110px 1fr;
-            grid-gap: 0 15px;
-        }
-        .myrow .row2 p{
 
-        }
-    </style>
-</head>
-<body onload="window.print()">
-<div class="container">
-                <div class="myrow pt-5">
-                    <div>
-                    <img src="../images/icon.png" width="100px" alt="the Book Garden">
-                    </div>
-                    <div class="row2">
-                        <p>ຮ້ານສວນໜັງສື<br>
-                        Book Garden</p>
-                    </div>
+<?php
+        require_once '../vendor/autoload.php';
+
+        $mdpf = new \Mpdf\Mpdf([
+            'format'    => "A4",
+            'mode'      => "utf-8",
+            'default_font_size' => 10,
+            'margin_top' => 10,
+            'margin_left' => 10,
+            'margin_right' => 10,
+            'margin_bottom' => 10,
+            'default_font'  => 'phetsarath_ot',
+        ]);
+
+        $content = '
+        <style>
+            .page{
+                width: 100%;
+                height: 29.7cm;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            .title{
+                display: block;
+                padding: 5px 0;
+            }
+            .img-back{
+                width: 250px;
+                height: 75px;
+                background: url("../images/icon.png");
+                background-repeat: no-repeat;
+                background-size: 250px 100%;
+            }
+            .img-back p{
+                padding-left: 100px;
+                padding-top: 25px;
+            }
+            .title .img-title{
+                width: 100px;
+                height: auto;
+                background: #fff;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 15px;
+            }
+            table{
+                width: 100%;
+                border-collapse: collapse;
+            }
+            table td, table th{
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+            th{
+                width: fit-content;
+                background: #04AA6D;
+                color: #fff;
+                text-align: center;
+                padding-top: 12px;
+                padding-bottom: 12px;
+            }
+            .source{
+                font-size: 12px;
+                position: fixed;
+                padding-left: 5px;
+            }
+            .source p {
+                padding: -5 0;
+            }
+            .table-footer{
+                background: #f7f4cd;
+                border: 1px solid #ddd;
+            }
+            .table-footer td{
+                border: none;
+            }
+        </style>
+        ';
+
+        $content .= '
+            <div class="page">
+
+                <div class="title">
+                <div class="img-back">
+                <p>ຮ້ານສວນໜັງສື<br/>
+                The Book Garden</p>
                 </div>
-            
-
-            <div class="col-md-12">
-                <h3 class="text-center">ລາຍງານຂໍ້ມູນລູກຄ້າ</h3>
-                <div class="d-flex flex-row">
-                    <div class="flex-fill"><p>ວັນທີ: <?= @date("d/m/Y"); ?></p></div>
-                    <div class="justify-content-end"><p>ຜູ້ໃຊ້ງານ: <?= @$_SESSION['name'] ?></p></div>
                 </div>
-                <table class="table table-hover table-bordered" id="example" style="width:100%">
-                <thead class="bg-dark text-white" style="text-align: center">
-                    <tr>
-                        <th>ລະຫັດ</th>
-                        <th>ຊື່ ແລະ ນາມສະກຸນ</th>
-                        <th>ເພດ</th>
-                        <th>ວັນເດືອນປີເກີດ</th>
-                        <th>ອາຍຸ</th>
-                        <th>ເບີໂທ</th>
-                        <th>ອີເມວ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $sql = "SELECT cusID, cusName,gender,dateOfBirth,year(curdate())-year(dateOfBirth) AS age,address,img,tel,email FROM tbCustomer";
-                    $result = mysqli_query($con, $sql);
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        
-                        ?>
-                        <tr>
-                            <td style="text-align: center" ><?= $row['cusID'] ?></td>
-                            <td><?= $row['cusName'] ?></td>
-                            <td style="text-align: center"><?= $row['gender'] ?></td>
-                            <td><?= $row['dateOfBirth'] ?></td>
-                            <td style="text-align: right"><?= $row['age'] ?></td>
-                            <td><?= $row['tel'] ?></td>
-                            <td><?= $row['email'] ?></td>
-                        </tr>
-                        <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
+                <div class="source">
+                <p>ສະຖານທີ່: ບ້ານຫ້ວຍຫົງ ເມື່ອງໄຊທານີ ນະຄອນຫຼວງ</p>
+                <p>ເບີໂທຕິດຕໍ່: 020 28 216 900</p>
+                <p>Facebook: The Book Garden</p>
+                </div>
+                <h3 style="text-align: center;"><u>ລາຍງານຂໍ້ມູນລູກຄ້າ</u></h3>
+                    <div style="text-align: right;">
+                        <p>ວັນທີ: '.date("d/m/Y").' </p>
+                        <p>ຜູ້ໃຊ້ງານ: '. $_SESSION['name'] .'</p>
+                    </div>
+    <table>
+        <thead class="table-primary text-center">
+            <tr>
+                <th>ລະຫັດ</th>
+                <th>ຊື່ ແລະ ນາມສະກຸນ</th>
+                <th>ເພດ</th>
+                <th>ວັນເດືອນປີເກີດ</th>
+                <th>ອາຍຸ</th>
+                <th>ທີ່ຢູ່</th>
+                <th>ເບີໂທ</th>
+                <th>ອີເມວ</th>
+            </tr>
+        </thead>
+        <tbody>
+        '; 
+        $sum = 0;
+        $sql = "SELECT cusID, cusName,gender,DATE_FORMAT(dateOfBirth, '%d/%m/%y') as bdate,year(curdate())-year(dateOfBirth) AS age,address,img,tel,email FROM tbCustomer";
+        $query_emp = mysqli_query($con, $sql);
+        while ($row = mysqli_fetch_array($query_emp)) {
+            $sum++;
+            $content .='
+            <tr>
+                <td style="text-align: center">'. $row['cusID'] .'</td>
+                <td>'. $row['cusName'] .'</td>
+                <td style="text-align: center">'. $row['gender'] .'</td>
+                <td style="text-align: right">'. $row['bdate'] .'</td>
+                <td style="text-align: right">'. $row['age'] .'</td>
+                <td>'. $row['address'] .'</td>
+                <td>'. $row['tel'] .'</td> 
+                <td>'. $row['email'] .'</td>
+            </tr>';
+                            }
+        mysqli_free_result($query_emp);
+        mysqli_next_result($con);
+        $content .='
+            <tr class="table-footer">
+                <td align="right" colspan="7">ລວມ:</td>
+                <td>'.$sum.' ຄົນ</td>
+            </tr>
+        </tbody>
+    </table>
 
-            </div>
-</div>
-</body>
-</html>
+    </div>
+    ';
+
+    // echo $content;
+    $mdpf->WriteHTML($content);
+    $mdpf->Output("ລາຍງານຂໍ້ມູນພະນັກງານ","I");
+    ?>

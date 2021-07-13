@@ -1,6 +1,14 @@
 <?php 
     include '../connectdb.php';
     include '../check-login.php';
+
+    $getid = '';
+    $where = '';
+
+    if(isset($_GET['cat'])){
+        $getid = $_GET['cat'];
+        $where = empty($getid) ? " " : "WHERE b.catID = '$getid'";
+    }
     
     $content = '';
 ?>
@@ -82,6 +90,11 @@
             .table-footer td{
                 border: none;
             }
+            .no_value td{
+                background: #eb6060;
+                color: #fff;
+                text-align: center;
+            }
         </style>
         ';
 
@@ -99,7 +112,7 @@
                 <p>ເບີໂທຕິດຕໍ່: 020 28 216 900</p>
                 <p>Facebook: The Book Garden</p>
                 </div>
-                <h3 style="text-align: center;"><u>ລາຍງານຂໍ້ມູນພະນັກງານ</u></h3>
+                <h3 style="text-align: center;font-weight:bold;"><u>ລາຍງານຂໍ້ມູນໜັງສື</u></h3>
                     <div style="text-align: right;">
                         <p>ວັນທີ: '.date("d/m/Y").' </p>
                         <p>ຜູ້ໃຊ້ງານ: '. $_SESSION['name'] .'</p>
@@ -108,36 +121,46 @@
         <thead class="table-primary text-center">
             <tr>
                 <th>ລະຫັດ</th>
-                <th>ຊື່ ແລະ ນາມສະກຸນ</th>
-                <th>ເພດ</th>
-                <th>ອາຍຸ</th>
-                <th>ຊື່ບັນຊີຜູ້ໃຊ້</th>
-                <th>ອີເມວ</th>
+                <th>ຊື່ໜັງສື</th>
+                <th>ລາຄາ</th>
+                <th>ສະຕ໋ອກ</th>
+                <th>ຜູ້ຂຽນ</th>
+                <th>ລາຍລະອຽດ</th>
+                <th>ປະເພດ</th>
             </tr>
         </thead>
         <tbody>
         '; 
         $sum = 0;
-        $sql = "SELECT stid, FirstName, lastName,gender,dateOfBirth,year(curdate())-year(dateOfBirth) AS age,address,img,tel,email,username FROM tbstaff";
-    $query_emp = mysqli_query($con, $sql);
+        $sql = "SELECT bkid,BkName,price,stock,author,detail,b.catID,catName FROM tbbook b left JOIN tbcategory c ON b.catID=c.catID $where ORDER BY bkid ASC";
+        $query_emp = mysqli_query($con, $sql);
+        if(mysqli_num_rows($query_emp) > 0){
         while ($row = mysqli_fetch_array($query_emp)) {
             $sum++;
             $content .='
             <tr>
-                <td style="text-align: center">'. $row['stid'] .'</td>
-                <td>'. $row['FirstName'] .' '. $row['lastName'] .'</td>
-                <td style="text-align: center">'. $row['gender'] .'</td>
-                <td style="text-align: right">'. $row['age'] .'</td>
-                <td>'. $row['username'] .'</td>
-                <td>'. $row['email'] .'</td>
+                <td align="center">'. $row['bkid'] .'</td>
+                <td>'. $row['BkName'] .'</td>
+                <td align="right">'. number_format($row['price'],2) .' ກີບ</td>
+                <td align="center">'. $row['stock'] .'</td>
+                <td>'. $row['author'] .'</td>
+                <td>'. $row['detail'] .'</td>
+                <td>'. $row['catName'] .'</td>
             </tr>';
                             }
+                        }else{
+                            $content .='
+                            <tr class="no_value">
+                                <td colspan="7">ບໍ່ມີຂໍ້ມູນ</td>
+                            </tr>
+                            ';
+                        }
         mysqli_free_result($query_emp);
         mysqli_next_result($con);
         $content .='
             <tr class="table-footer">
-                <td align="right" colspan="5">ລວມ:</td>
-                <td>'.$sum.' ຄົນ</td>
+                <td align="right" colspan="6">ລວມທັງໝົດ:</td>
+                <td>'.$sum.' ເຫຼັ້ມ</td>
             </tr>
         </tbody>
     </table>
@@ -146,6 +169,7 @@
     ';
 
     // echo $content;
+    // $mdpf->WriteHTML(file_get_contents('../css/bootstrap.min.css'), 1);
     $mdpf->WriteHTML($content);
     $mdpf->Output("ລາຍງານຂໍ້ມູນພະນັກງານ","I");
     ?>

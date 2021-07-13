@@ -147,19 +147,19 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="supplier-report.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>ພິມລາຍງານຂໍ້ມູນຜູ້ສະໜອງ</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="book-report.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>ພິມລາຍງານຂໍ້ມູນໜັງສື</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="category-report.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>ພິມລາຍງານຂໍ້ມູນປະເພດໜັງສື</p>
                             </a>
@@ -197,23 +197,24 @@
     <!-- /.sidebar -->
 </aside>
 
-<form action="logout.php" method="POST" id="formLogout">
-    <div class="modal fade font14" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<form action="logout.php" method="post">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ຢຶນຢັນ</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">ອອກຈາກລະບົບ</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" align="center">
-                    ທ່ານຕ້ອງການອອກຈາກລະບົບ ຫຼື ບໍ່ ?
+                <div class="modal-body">
+                    <p>ທ່ານຕ້ອງການອອກຈາກລະບົບ ຫຼື ບໍ່?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">ຍົກເລີກ</button>
-                    <button type="submit" name="btnLogout" class="btn btn-outline-danger">ອອກຈາກລະບົບ</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">ອອກຈາກລະບົບ</button>
                 </div>
             </div>
         </div>

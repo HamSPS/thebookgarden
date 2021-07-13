@@ -99,7 +99,7 @@
                 <p>ເບີໂທຕິດຕໍ່: 020 28 216 900</p>
                 <p>Facebook: The Book Garden</p>
                 </div>
-                <h3 style="text-align: center;"><u>ລາຍງານຂໍ້ມູນພະນັກງານ</u></h3>
+                <h3 style="text-align: center;"><u>ລາຍງານຂໍ້ມູນປະເພດໜັງສື</u></h3>
                     <div style="text-align: right;">
                         <p>ວັນທີ: '.date("d/m/Y").' </p>
                         <p>ຜູ້ໃຊ້ງານ: '. $_SESSION['name'] .'</p>
@@ -107,37 +107,29 @@
     <table>
         <thead class="table-primary text-center">
             <tr>
-                <th>ລະຫັດ</th>
-                <th>ຊື່ ແລະ ນາມສະກຸນ</th>
-                <th>ເພດ</th>
-                <th>ອາຍຸ</th>
-                <th>ຊື່ບັນຊີຜູ້ໃຊ້</th>
-                <th>ອີເມວ</th>
+                <th>ລະຫັດປະເພດໜັງສື</th>
+                <th>ຊື່ປະເພດໜັງສື</th>
             </tr>
         </thead>
         <tbody>
         '; 
         $sum = 0;
-        $sql = "SELECT stid, FirstName, lastName,gender,dateOfBirth,year(curdate())-year(dateOfBirth) AS age,address,img,tel,email,username FROM tbstaff";
-    $query_emp = mysqli_query($con, $sql);
+        $sql = "SELECT * FROM tbcategory";
+        $query_emp = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_array($query_emp)) {
             $sum++;
             $content .='
             <tr>
-                <td style="text-align: center">'. $row['stid'] .'</td>
-                <td>'. $row['FirstName'] .' '. $row['lastName'] .'</td>
-                <td style="text-align: center">'. $row['gender'] .'</td>
-                <td style="text-align: right">'. $row['age'] .'</td>
-                <td>'. $row['username'] .'</td>
-                <td>'. $row['email'] .'</td>
+                <td style="text-align: center">'. $row['catID'] .'</td>
+                <td>'. $row['catName'] .'</td>
             </tr>';
                             }
         mysqli_free_result($query_emp);
         mysqli_next_result($con);
         $content .='
             <tr class="table-footer">
-                <td align="right" colspan="5">ລວມ:</td>
-                <td>'.$sum.' ຄົນ</td>
+                <td align="right">ລວມ:</td>
+                <td>'.$sum.' ປະເພດ</td>
             </tr>
         </tbody>
     </table>

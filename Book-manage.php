@@ -13,7 +13,7 @@
             </p>
 
             <div class="table-responsive">
-            <table id="example" class="table table-hover table-bordered" style="width:100%">
+            <table id="example" class="table table-hover table-bordered display" style="width:100%">
                     <thead style="background-color: beige; text-align: center">
                         <tr>
                             <th>ລະຫັດ</th>

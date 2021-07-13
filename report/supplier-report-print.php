@@ -99,7 +99,7 @@
                 <p>ເບີໂທຕິດຕໍ່: 020 28 216 900</p>
                 <p>Facebook: The Book Garden</p>
                 </div>
-                <h3 style="text-align: center;"><u>ລາຍງານຂໍ້ມູນພະນັກງານ</u></h3>
+                <h3 style="text-align: center;"><u>ລາຍງານຂໍ້ມູນຜູ້ສະໜອງ</u></h3>
                     <div style="text-align: right;">
                         <p>ວັນທີ: '.date("d/m/Y").' </p>
                         <p>ຜູ້ໃຊ້ງານ: '. $_SESSION['name'] .'</p>
@@ -108,28 +108,28 @@
         <thead class="table-primary text-center">
             <tr>
                 <th>ລະຫັດ</th>
-                <th>ຊື່ ແລະ ນາມສະກຸນ</th>
-                <th>ເພດ</th>
-                <th>ອາຍຸ</th>
-                <th>ຊື່ບັນຊີຜູ້ໃຊ້</th>
+                <th>ຊື່ຜູ້ສະໜອງ</th>
+                <th>ຜູ້ຕິດຕໍ່</th>
+                <th>ເບີໂທ</th>
                 <th>ອີເມວ</th>
+                <th>ທີ່ຢູ່</th>
             </tr>
         </thead>
         <tbody>
         '; 
         $sum = 0;
-        $sql = "SELECT stid, FirstName, lastName,gender,dateOfBirth,year(curdate())-year(dateOfBirth) AS age,address,img,tel,email,username FROM tbstaff";
-    $query_emp = mysqli_query($con, $sql);
+        $sql = "SELECT * FROM tbsuppliers";
+        $query_emp = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_array($query_emp)) {
             $sum++;
             $content .='
             <tr>
-                <td style="text-align: center">'. $row['stid'] .'</td>
-                <td>'. $row['FirstName'] .' '. $row['lastName'] .'</td>
-                <td style="text-align: center">'. $row['gender'] .'</td>
-                <td style="text-align: right">'. $row['age'] .'</td>
-                <td>'. $row['username'] .'</td>
-                <td>'. $row['email'] .'</td>
+                <td style="text-align: center">'. $row['sup_id'] .'</td>
+                <td>'. $row['sup_Name'] .'</td>
+                <td>'. $row['contactName'] .'</td>
+                <td align="center">'. $row['sup_tel'] .'</td>
+                <td>'. $row['sup_email'] .'</td>
+                <td>'. $row['sup_address'] .'</td>
             </tr>';
                             }
         mysqli_free_result($query_emp);

@@ -35,7 +35,7 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="table-responsive mt-3">
-                            <table class="table table-bordered table-hover" id="example">
+                            <table class="table table-bordered table-hover display" id="example">
                                 <thead class="table-success text-center">
                                     <tr>
                                         <th>ລຳດັບ</th>
@@ -97,10 +97,10 @@
                                             class="fas fa-search"></i></button>
                                 </div>
                             </form>
-                            <table class="table table-bordered table-hover" id="show">
+                            <table class="table table-bordered table-hover display" id="history" style="width: 100%;">
                                 <thead class="table-success text-center">
-                                    <tr>
-                                        <th style="width: 15px">ລຳດັບ</th>
+                                    <tr class="fix_width">
+                                        <th>ລຳດັບ</th>
                                         <th>ລະຫັດ</th>
                                         <th>ວັນທີນຳເຂົ້າ</th>
                                         <th>ນຳເຂົ້າໂດຍ</th>
@@ -179,11 +179,6 @@ $("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
 // on load of the page: switch to the currently selected tab
 var hash = window.location.hash;
 $('#myTab a[href="' + hash + '"]').tab('show');
-
-$(document).ready(function() {
-    $('#show').DataTable();
-    $('[data-toggle="tooltip"]').tooltip();
-});
 </script>
 </body>
 

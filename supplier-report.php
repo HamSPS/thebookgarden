@@ -7,11 +7,11 @@
 <div class="container-fluid" style="margin-top: 15px">
     <div class="alert alert-success alert-dismissible" style="text-align: center">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>ລາຍງານຂໍ້ມູນພະນັກງານ</strong>
+        <strong>ລາຍງານຂໍ້ມູນຜູ້ສະໜອງ</strong>
     </div>
 
     <p class="d-flex justify-content-end">
-        <a href="report/emp-report-print.php" class="btn btn-info" target="_blank"><i class="fas fa-print"></i>
+        <a href="report/supplier-report-print.php" class="btn btn-info" target="_blank"><i class="fas fa-print"></i>
             ພີມລາຍງານ</a>
     </p>
 
@@ -20,27 +20,27 @@
             <thead class="bg-dark text-white" style="text-align: center">
                 <tr>
                     <th>ລະຫັດ</th>
-                    <th>ຊື່ ແລະ ນາມສະກຸນ</th>
-                    <th>ເພດ</th>
-                    <th>ອາຍຸ</th>
-                    <th>ຊື່ບັນຊີຜູ້ໃຊ້</th>
+                    <th>ຊື່ຜູ້ສະໜອງ</th>
+                    <th>ຜູ້ຕິດຕໍ່</th>
+                    <th>ເບີໂທ</th>
                     <th>ອີເມວ</th>
+                    <th>ທີ່ຢູ່</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                        $sql = "SELECT stid, FirstName, LastName,gender,dateOfBirth,year(curdate())-year(dateOfBirth) AS age,address,img,tel,email,username FROM tbstaff";
+                        $sql = "SELECT * FROM tbSuppliers";
                         $result = mysqli_query($con, $sql);
                         while ($row = mysqli_fetch_assoc($result)) {
                             
                             ?>
                 <tr>
-                    <td style="text-align: center"><?= $row['stid'] ?></td>
-                    <td><?= $row['FirstName'] ?> <?= $row['LastName'] ?></td>
-                    <td style="text-align: center"><?= $row['gender'] ?></td>
-                    <td style="text-align: right"><?= $row['age'] ?></td>
-                    <td><?= $row['username'] ?></td>
-                    <td><?= $row['email'] ?></td>
+                    <td style="text-align: center"><?= $row['sup_id'] ?></td>
+                    <td><?= $row['sup_Name'] ?></td>
+                    <td><?= $row['contactName'] ?></td>
+                    <td class="text-center"><?= $row['sup_tel'] ?></td>
+                    <td><?= $row['sup_email'] ?></td>
+                    <td><?= $row['sup_address'] ?></td>
                 </tr>
                 <?php
                         }
