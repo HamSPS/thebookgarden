@@ -10,7 +10,7 @@
     </div>
         <div class="m-3">
             <a href="emp-add.php" class="btn btn-info"><i class="fas fa-plus-circle"></i> ເພີ່ມຂໍ້ມູນ</a>
-            <a href="report/emp-report-print.php" class="btn btn-info" target="_blank"><i class="fas fa-print"></i> ພີມລາຍງານ</a>
+            <!-- <a href="report/emp-report-print.php" class="btn btn-info" target="_blank"><i class="fas fa-print"></i> ພີມລາຍງານ</a> -->
         </div>
 
     <div class="table-responsive">
@@ -40,9 +40,9 @@
                                 <td><?= $row['username'] ?></td>
                                 <td><?= $row['email'] ?></td>
                                 <td style="width: 80px;white-space: nowrap; text-align: center">
-                                    <a  href="#"  onclick="viewdata(<?php echo "'" . $row['stid'] . "'"; ?>)" data-toggle="tooltip" data-placement="top" title="ລາຍລະອຽດ"> <i class="fas fa-eye"></i> ສະແດງ</a> |
-                                    <a href="emp-edit.php?stid=<?= $row['stid'] ?>" data-toggle="tooltip" data-placement="bottom" title="ແກ້ໄຂ"><i class="fas fa-edit" style="color: green"></i> ແກ້ໄຂ</a> |
-                                    <a href="#" onclick="deletedata(<?php echo "'" . $row['stid'] . "'"; ?>)" data-toggle="tooltip" data-placement="left" title="ລືບ"><i class="fas fa-trash-alt" style="color: red"></i> ລົບ</a>
+                                    <a  href="#"  onclick="viewdata(<?php echo "'" . $row['stid'] . "'"; ?>)" data-toggle="tooltip" data-placement="top" title="ລາຍລະອຽດ"> <i class="fas fa-eye"></i></a> |
+                                    <a href="emp-edit.php?stid=<?= $row['stid'] ?>" data-toggle="tooltip" data-placement="bottom" title="ແກ້ໄຂ"><i class="fas fa-edit" style="color: green"></i></a> |
+                                    <a href="#" onclick="deletedata(<?php echo "'" . $row['stid'] . "'"; ?>)" data-toggle="tooltip" data-placement="left" title="ລືບ"><i class="fas fa-trash-alt" style="color: red"></i></a>
                                 </td>
                             </tr>
                             <?php

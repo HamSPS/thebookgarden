@@ -151,5 +151,5 @@
 
     // echo $content;
     $mdpf->WriteHTML($content);
-    $mdpf->Output("ລາຍງານຂໍ້ມູນພະນັກງານ","I");
+    $mdpf->Output("customer.pdf","I");
     ?>

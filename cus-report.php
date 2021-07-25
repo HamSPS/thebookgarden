@@ -44,40 +44,14 @@
                     <td style="text-align: right"><?= $row['age'] ?></td>
                     <td><?= $row['tel'] ?></td>
                     <td><?= $row['email'] ?></td>
-                    <td style="text-align: center;"><a href="#" onclick="viewcard()" class="btn btn-success"
-                            data-toggle="tooltip" data-placement="bottom" title="ແກ້ໄຂ"><i class="fas fa-print"></i>
-                            ສະແດງ</a></td>
+                    <td style="text-align: center;"><a href="report/cus-card.php?cusid=<?= $row['cusID'] ?>" target="_blank" class="btn btn-outline-success"><i class="fas fa-print"></i>
+                            ພິມບັດ</a></td>
                 </tr>
                 <?php
                         }
                         ?>
             </tbody>
         </table>
-    </div>
-</div>
-<div class="modal fade" id="myModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header bg-info text-white">
-                <h5 class="modal-title">ລາຍລະອຽດຂໍ້ມູນລູກຄ້າ</h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body" id="show_detail">
-
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <a href="report/cus-membership.php?cusID=<?= $row['cusID'] ?>" class="btn btn-success"
-                    data-toggle="tooltip" data-placement="bottom" title="ແກ້ໄຂ"><i class="fas fa-print"></i> ພິມບັດ</a>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">ປິດ</button>
-            </div>
-
-        </div>
     </div>
 </div>
 
@@ -87,27 +61,6 @@
 <?php 
     include 'footer.php';
 ?>
-<script>
-$(document).ready(function() {
-    $('#example').DataTable();
-    $('[data-toggle="tooltip"]').tooltip();
-});
-
-function viewcard(id) {
-    $.ajax({
-        url: "report/cus-membership.php",
-        method: "post",
-        data: {
-            cusID: id
-        },
-        success: function(data) {
-
-            $('#show_detail').html(data);
-            $('#myModal').modal("show");
-        }
-    });
-}
-</script>
 
 
 </body>

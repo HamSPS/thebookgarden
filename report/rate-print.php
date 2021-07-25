@@ -99,7 +99,7 @@
                 <p>ເບີໂທຕິດຕໍ່: 020 28 216 900</p>
                 <p>Facebook: The Book Garden</p>
                 </div>
-                <h3 style="text-align: center;"><u>ລາຍງານຂໍ້ມູນຜູ້ສະໜອງ</u></h3>
+                <h3 style="text-align: center;"><u>ລາຍງານຂໍ້ມູນອັດຕາແລກປ່ຽນ</u></h3>
                     <div style="text-align: right;">
                         <p>ວັນທີ: '.date("d/m/Y").' </p>
                         <p>ຜູ້ໃຊ້ງານ: '. $_SESSION['name'] .'</p>
@@ -107,37 +107,31 @@
     <table>
         <thead class="table-primary text-center">
             <tr>
-                <th>ລະຫັດ</th>
-                <th>ຊື່ຜູ້ສະໜອງ</th>
-                <th>ຜູ້ຕິດຕໍ່</th>
-                <th>ເບີໂທ</th>
-                <th>ອີເມວ</th>
-                <th>ທີ່ຢູ່</th>
+                <th>ລະຫັດອັດຕາແລກປ່ຽນ</th>
+                <th>ຊື່ສະກຸນເງິນ</th>
+                <th>ອັດຕາແລກປ່ຽນ</th>
             </tr>
         </thead>
         <tbody>
         '; 
         $sum = 0;
-        $sql = "SELECT * FROM tbsuppliers";
+        $sql = "SELECT * FROM tbcurrency";
         $query_emp = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_array($query_emp)) {
             $sum++;
             $content .='
             <tr>
-                <td style="text-align: center">'. $row['sup_id'] .'</td>
-                <td>'. $row['sup_Name'] .'</td>
-                <td>'. $row['contactName'] .'</td>
-                <td align="center">'. $row['sup_tel'] .'</td>
-                <td>'. $row['sup_email'] .'</td>
-                <td>'. $row['sup_address'] .'</td>
+                <td style="text-align: center">'. $row['cry_ID'] .'</td>
+                <td>'. $row['cry_name'] .'</td>
+                <td>'. number_format($row['cry_num'],2) .' ກີບ</td>
             </tr>';
                             }
         mysqli_free_result($query_emp);
         mysqli_next_result($con);
         $content .='
             <tr class="table-footer">
-                <td align="right" colspan="5">ລວມ:</td>
-                <td>'.$sum.' ຄົນ</td>
+                <td align="right" colspan="2">ລວມ:</td>
+                <td>'.$sum.'</td>
             </tr>
         </tbody>
     </table>
@@ -147,5 +141,5 @@
 
     // echo $content;
     $mdpf->WriteHTML($content);
-    $mdpf->Output("supplier.pdf","I");
+    $mdpf->Output("rate.pdf","I");
     ?>

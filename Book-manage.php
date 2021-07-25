@@ -41,8 +41,8 @@
                                 <td><?= $row['catName']; ?></td>
                                 <td><img src="<?= $row['img']; ?>" width="100px" alt="ຮູບໜັງສື"></td>
                                 <td style="width: 80px;white-space: nowrap; text-align: center">
-                                    <a href="book-edit.php?Bkid=<?= $row['Bkid'] ?>" data-toggle="tooltip" data-placement="bottom" title="ແກ້ໄຂ"><i class="fas fa-edit" style="color: green"></i> ແກ້ໄຂ</a> | 
-                                    <a href="#" onclick="deletedata(<?php echo "'" . $row['Bkid'] . "'"; ?>)" data-toggle="tooltip" data-placement="left" title="ລືບ"><i class="fas fa-trash-alt" style="color: red"></i> ລົບ</a>
+                                    <a href="book-edit.php?Bkid=<?= $row['Bkid'] ?>" data-toggle="tooltip" class="btn btn-outline-success" data-placement="bottom" title="ແກ້ໄຂ"><i class="fas fa-edit"></i></a> | 
+                                    <a href="#" onclick="deletedata(<?php echo "'" . $row['Bkid'] . "'"; ?>)" class="btn btn-outline-danger" data-toggle="tooltip" data-placement="left" title="ລືບ"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                             <?php

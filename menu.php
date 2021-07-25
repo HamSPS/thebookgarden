@@ -165,21 +165,28 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="rate-report.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ພິມລາຍງານຂໍ້ມູນອັດຕາແລກປ່ຽນ</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="sale-report.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>ພິມລາຍງານຂໍ້ມູນການຂາຍ</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="revenue-report.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>ພິມລາຍງານລາຍຮັບ-ຈ່າຍ</p>
+                                <p>ພິມລາຍງານລາຍຮັບ</p>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="expense-report.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>ພິມບັດສະມາຊິກ</p>
+                                <p>ພິມລາຍງານລາຍຈ່າຍ</p>
                             </a>
                         </li>
                     </ul>
@@ -230,12 +237,6 @@
 
                 <div class="col-sm-6">
                     <h1 class="m-0 LaoFonts">ລະບົບຈັດການຂໍ້ມູນຮ້ານ The Book Garden</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Starter Page</li>
-                    </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->

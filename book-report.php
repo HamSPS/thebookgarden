@@ -28,7 +28,7 @@
                             $result = mysqli_query($con, $sql);
                             while ($row = mysqli_fetch_assoc($result)) {
                                 ?>
-                    <option value="<?= $row['catID'] ?>" <?php if ($row['catID'] == @$department) echo "selected"; ?>>
+                    <option value="<?= $row['catID'] ?>" <?php if ($row['catID'] == @$cat) echo "selected"; ?>>
                         <?= $row['catName'] ?></option>
                     <?php
                             }

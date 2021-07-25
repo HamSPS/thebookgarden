@@ -11,8 +11,8 @@
 
         <div class="m-3">
             <a href="cus-add.php" class="btn btn-info"><i class="fas fa-plus-circle"></i> ເພີ່ມຂໍ້ມູນ</a> &nbsp; &nbsp;
-            <a href="report/cus-report-print.php" class="btn btn-info" target="_black"><i class="fas fa-print"></i>
-                ພິມລາຍງານ</a>
+            <!-- <a href="report/cus-report-print.php" class="btn btn-info" target="_black"><i class="fas fa-print"></i>
+                ພິມລາຍງານ</a> -->
         </div>
 
         <div class="table-responsive">
@@ -25,7 +25,6 @@
                         <th>ເພດ</th>
                         <th>ວັນເດືອນປີເກີດ</th>
                         <th>ອີເມວ</th>
-                        <th>ພິມບັດ</th>
                         <th>ອ໋ອບຊັນ</th>
                     </tr>
                 </thead>
@@ -42,19 +41,16 @@
                         <td style="text-align: center"><?= $row['gender'] ?></td>
                         <td><?= $row['dateOfBirth'] ?></td>
                         <td><?= $row['email'] ?></td>
-                        <td class="text-center" width="100px">
-                            <a href="#" class="btn btn-info"><i class="fas fa-file"></i> ພິມບັດ</a>
-                        </td>
                         <td style="width: 80px;white-space: nowrap; text-align: center">
                             <a href="#" onclick="viewdata(<?php echo "'" . $row['cusID'] . "'"; ?>)"
                                 data-toggle="tooltip" data-placement="top" title="ລາຍລະອຽດ"> <i class="fas fa-eye"></i>
-                                ສະແດງ</a> |
+                                </a> |
                             <a href="cus-edit.php?cusID=<?= $row['cusID'] ?>" data-toggle="tooltip"
                                 data-placement="bottom" title="ແກ້ໄຂ"><i class="fas fa-edit" style="color: green"></i>
-                                ແກ້ໄຂ</a> |
+                                </a> |
                             <a href="#" onclick="deletedata(<?php echo "'" . $row['cusID'] . "'"; ?>)"
                                 data-toggle="tooltip" data-placement="left" title="ລືບ"><i class="fas fa-trash-alt"
-                                    style="color: red"></i> ລົບ</a>
+                                    style="color: red"></i></a>
                         </td>
                     </tr>
                     <?php

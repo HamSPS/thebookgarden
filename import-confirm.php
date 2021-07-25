@@ -1,7 +1,7 @@
 <?php
      include 'check-login.php';
      
-    $getID = $_GET['pcid'];
+    @$getID = $_GET['pcid'];
     $act = $_GET['act'];
 
     if ($act == 'add') {
@@ -302,8 +302,7 @@
                                         <td align="right"><?= number_format($row['price'] * $qty,2) ?> ກີບ</td>
                                         <td>
                                             <a href="import-confirm.php?b_id=<?= $b_id ?>&act=remove"
-                                                class="btn btn-danger"><i class="fas fa-trash"></i>
-                                                ລົບ</a>
+                                                class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     <?php 

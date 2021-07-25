@@ -10,7 +10,7 @@
                 <h5 class="text-center alert alert-success">ປະຫວັດການຂາຍ</h5>
                 <a href="frmSale.php" class="btn btn-danger my-2 text-right"><i class="fas fa-backspace"></i>
                     ກັບໜ້າຂາຍ</a>
-                <table class="table table-bordered table-striped table-hover" id="example">
+                <table class="table table-bordered table-striped table-hover display" id="example">
                     <thead class="text-center table-success">
                         <tr>
                             <th>ລຳດັບ</th>

@@ -2,27 +2,24 @@
     include '../connectdb.php';
     include '../check-login.php';
 
-    $start = '';
-    $end = '';
-    $where = '';
-
-    if(isset($_GET['start']) && isset($_GET['end'])){
-        $start = $_GET['start'];
-        $end = $_GET['end'];
-        $where = empty($start) ? " " : "WHERE sl_date >= '$start' AND sl_date <= '$end'";
-    }
-    
-    if ($start == '') {
-        $sale_start = "ລາຍງານທັງໝົດ";
-    }else{
-        $sale_start = "ລາຍງານຈາກວັນທີ່: ". $start;
-    }
-
-    if ($end == '') {
-        $sale_end = "";
-    }else{
-        $sale_end = "ຫາວັນທີ: ".$end;
-    }
+        $get = "";
+        $sql = "";
+        $title = "";
+        if (isset($_GET['date'])) {
+            $get = $_GET['date'];
+            if ($get == "date") {
+                $sql = "SELECT DATE_FORMAT(sl_date, '%d/%M/%Y') AS sdate, sum(total_price) as sl_sum,sum(qty) as qty FROM tbsale s left JOIN sale_detail sd ON s.slID=sd.slID GROUP BY DATE_FORMAT(sl_date, '%Y-%m-%d') LIMIT 30";   
+                $title = "ພີມລາຍງານລາຍຮັບຕາມວັນ";
+            }
+            if ($get == "month") {
+                $sql = "SELECT DATE_FORMAT(sl_date, '%M/%Y') AS sdate, sum(total_price) as sl_sum,sum(qty) as qty FROM tbsale s left JOIN sale_detail sd ON s.slID=sd.slID GROUP BY DATE_FORMAT(sl_date, '%Y-%m') LIMIT 30";
+                $title = "ພີມລາຍງານລາຍຮັບຕາມເດືອນ";
+            }
+            if ($get == "year") {
+                $sql = "SELECT DATE_FORMAT(sl_date, '%Y') AS sdate, sum(total_price) as sl_sum,sum(qty) as qty FROM tbsale s left JOIN sale_detail sd ON s.slID=sd.slID GROUP BY DATE_FORMAT(sl_date, '%Y') LIMIT 30";
+                $title = "ພີມລາຍງານລາຍຮັບຕາມປີ";
+            }
+        }
     $content = '';
 ?>
 
@@ -129,90 +126,68 @@
                 <p>ເບີໂທຕິດຕໍ່: 020 28 216 900</p>
                 <p>Facebook: The Book Garden</p>
                 </div>
-                <h3 style="text-align: center;font-weight:bold;"><u>ລາຍງານຂໍ້ມູນການຂາຍ</u></h3>
+                <h3 style="text-align: center;font-weight:bold;"><u>'.$title.'</u></h3>
                     
 <table class="no-border">
     <tr>
         <td>ວັນທີພີມ: '.date("d/m/Y").'</td>
         <td align="right">ຜູ້ໃຊ້ງານ: '. $_SESSION['name'] .'</td>
     </tr>
-    <tr>
-        <td colspan="2">
-            '. $sale_start .' '. $sale_end .'
-        </td>
-    </tr>
 </table>
     <table>
         <thead class="table-primary text-center">
             <tr>
-                <th>ລະຫັດ</th>
-                <th>ວັນທີຂາຍ</th>
-                <th>ຊື່ພະນັກງານ</th>
+                <th>ລຳດັບ</th>
+                <th>ວັນທີ</th>
+                <th>ລາຍຮັບ</th>
                 <th>ຈຳນວນ</th>
-                <th>ລາຄາລວມ</th>
-                <th>ຈຳນວນທີ່ຈ່າຍ</th>
-            </tr>
+                </tr>
         </thead>
-        <tbody>
-        '; 
-        $sum = 0;
-        $total_price = 0;
-        $sql = "SELECT slID,sl_date,FirstName,lastName,total_price,sl_pay FROM tbsale sl LEFT JOIN tbstaff st ON sl.stID=st.stid $where ORDER BY slID";
-        $query_emp = mysqli_query($con, $sql);
-        if(mysqli_num_rows($query_emp) > 0){
-        while ($row = mysqli_fetch_array($query_emp)) {
-            $sum++;
-            $total_price += $row['total_price'];
-            $content .='
-            <tr>
-                <td align="center">'. $row['slID'] .'</td>
-                <td align="center">'. $row['sl_date'] .'</td>
-                <td>'. $row['FirstName'] .' '. $row['lastName'] .'</td>
-                <td align="center">';
+        <tbody>';
+        ?>
+<?php
+            
+            $result = mysqli_query($con, $sql) or die ("Error in query: $sql". mysqli_error($sql));
+            $total = 0;
+            $i = 0;
+            $sum = 0;
+            while ($row = mysqli_fetch_array($result)) {
+                $total += $row[1] ;
+                $sum += $row[2];
+                $i++;
+                
                 ?>
 <?php
-                    $detail = mysqli_query($con, "SELECT * FROM sale_detail WHERE slid = '$row[slID]'");
-                    $d = mysqli_num_rows($detail);
-                $content .=' '. $d .'
-                </td>
-                <td align="right">'. number_format($row['total_price'],2) .' ກີບ</td>
-                <td style="text-align: right">';
-                ?>
-<?php
-                    if ($row['sl_pay'] == "") {
-                        $pay = "";
-                    }else{
-                        $pay = $row['sl_pay'] .' ກີບ';
-                    }
-                    $content .=' '. $pay .'
-                </td>
-            </tr>';
-                            }
-                        }else{
-                            $content .='
-                            <tr class="no_value">
-                                <td colspan="6">ບໍ່ມີຂໍ້ມູນ</td>
-                            </tr>
-                            ';
-                        }
-        mysqli_free_result($query_emp);
-        mysqli_next_result($con);
-        $content .='
-            <tr class="table-footer">
-                <td colspan="2"></td>
-                <td align="right">ລວມທັງໝົດ:</td>
-                <td>'.$sum.' ຄັ້ງ</td>
-                <td>ຍອດຂາຍລວມ:</td>
-                <td>'.number_format($total_price,2).' ກີບ</td>
-            </tr>
-        </tbody>
-    </table>
+                $content .='
+        <tr>
+            <td>'. $i .'.</td>
+<td align="center">'. $row['sdate'] .'</td>
+<td align="right">'. number_format($row['sl_sum'],2) .'
+    ກີບ</td>
+    <td align="center">'. $row['qty'] .'</td>
+    </tr>';
+?>
 
-    </div>
-    ';
-
-    // echo $content;
-    // $mdpf->WriteHTML(file_get_contents('../css/bootstrap.min.css'), 1);
-    $mdpf->WriteHTML($content);
-    $mdpf->Output("sale.pdf","I");
+<?php 
+    }
     ?>
+
+<?php
+$content .='
+        <tr bgColor="#343a40">
+            <td style="color:#fff;font-weight:bold;" colspan="2" align="right">ລວມ</td>
+            <td style="color:#fff;font-weight:bold;" align="right">'. number_format($total, 2) .' ກີບ</td>
+            <td style="color:#fff;font-weight:bold;" align="center">'. $sum .'</td>
+        </tr>
+
+</tbody>
+</table>
+
+</div>
+';
+
+// echo $content;
+// $mdpf->WriteHTML(file_get_contents('../css/bootstrap.min.css'), 1);
+$mdpf->WriteHTML($content);
+$mdpf->Output("revenue.pdf","I");
+?>

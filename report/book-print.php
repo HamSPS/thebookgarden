@@ -171,5 +171,5 @@
     // echo $content;
     // $mdpf->WriteHTML(file_get_contents('../css/bootstrap.min.css'), 1);
     $mdpf->WriteHTML($content);
-    $mdpf->Output("ລາຍງານຂໍ້ມູນພະນັກງານ","I");
+    $mdpf->Output("book.pdf","I");
     ?>
