@@ -230,13 +230,22 @@
         document.getElementById("change").innerHTML= change;
     }
     function stopChange(){
-        var pay=document.getElementById("pay").value;
-        var total=document.getElementById("total").value;
+        var pay=document.getElementById("pay");
+        var total=document.getElementById("total");
 
-        if(pay == 0 || pay < total){
+        if(pay == 0 || pay == null){
             swal("ພິດພາດ", "ກະລຸນາປ້ອນຈຳນວນເງິນ", "error");
+            // alert(100000 < 75000)
             event.preventDefault();
             return false;
+        }else if(pay < total){
+            swal("ພິດພາດ", "ກະລຸນາປ້ອນຈຳນວນເງິນໃຫ້ຄົບຖ້ວນ", "error");
+            alert(pay < total);
+            console.log("ຄ່າແມ່ນ:​ "+ pay +" < "+ total);
+            event.preventDefault();
+            return false;
+        }else{
+            alert("finnished")
         }
         return true;
     }
