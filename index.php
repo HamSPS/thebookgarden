@@ -63,10 +63,10 @@
                                     <hr>
 
                                     <h5>ສະຫຼຸບຍອດຂາຍ</h5>
-                                    <a href="#" class="btn btn-primary">ສະແດງການຂາຍ</a>
+                                    <a href="sale-report.php" class="btn btn-primary">ສະແດງການຂາຍ</a>
                                     <a href="#" class="btn btn-primary">ສະແດງລາຍການຈອງ</a>
-                                    <a href="#" class="btn btn-primary">ສະແດງລາຍສັ່ງຊື້</a>
-                                    <a href="#" class="btn btn-primary">ສະແດງການນຳເຂົ້າ</a>
+                                    <a href="order-report.php" class="btn btn-primary">ສະແດງລາຍສັ່ງຊື້</a>
+                                    <a href="import-report.php" class="btn btn-primary">ສະແດງການນຳເຂົ້າ</a>
                                     <div class="d-flex">
                                         <div class="table-responsive m-1">
                                             <table class="table table-bordered">
