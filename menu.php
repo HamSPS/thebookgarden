@@ -189,6 +189,18 @@
                                 <p>ພິມລາຍງານລາຍຈ່າຍ</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="order-report.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ພິມລາຍງານການສັ່ງຊື້</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="import-report.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ພິມລາຍງານການນຳເຂົ້າ</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">

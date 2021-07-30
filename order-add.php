@@ -110,7 +110,7 @@
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel"
                                     aria-labelledby="home-tab">
-                                    <table class="table table-bordered" id="example" style="width:100%;">
+                                    <table class="table table-bordered display" id="example" style="width:100%;">
                                         <thead class="table-success text-center">
                                             <tr>
                                                 <th>ລຳດັບ</th>

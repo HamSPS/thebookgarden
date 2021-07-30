@@ -52,6 +52,8 @@
             foreach($_SESSION['import'] as $b_id){
                 unset($_SESSION['import']);
             }
+            mysqli_query($con, "UPDATE tbpurchase SET sts_id = 4 WHERE pcid = '$getID'");
+
             echo '<script type="text/javascript">
             swal("ສໍາເລັດ", "ຂໍ້ມູນຖືກບັນທຶກລົງຖານຂໍ້ມູນແລ້ວ", "success")
             .then((value) => {
@@ -59,7 +61,6 @@
             }) 
             </script>';
             
-            mysqli_query($con, "UPDATE tbpurchase SET sts_id = 4 WHERE pcid = '$getID'");
             // header("refresh:2;url=import.php");
         }else{
             mysqli_query($con, "ROLLBACK");

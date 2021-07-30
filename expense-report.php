@@ -24,7 +24,7 @@
 <div class="container-fluid" style="margin-top: 15px">
     <div class="alert alert-success alert-dismissible" style="text-align: center">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>ລາຍງານຂໍ້ມູນການຂາຍ</strong>
+        <strong>ລາຍງານຂໍ້ມູນລາຍຈ່າຍ</strong>
     </div>
 
     <!-- <p class="d-flex justify-content-end">

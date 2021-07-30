@@ -133,5 +133,5 @@
 
     // echo $content;
     $mdpf->WriteHTML($content);
-    $mdpf->Output("employee.pdf","I");
+    $mdpf->Output("card.pdf","I");
     ?>
