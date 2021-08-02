@@ -19,7 +19,7 @@
         Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2021</strong> ລະບົບຈັດການຮ້ານ The Book Garden
+    <strong>Copyright &copy; 2021</strong> ລະບົບຈັດການຂໍ້ມູນຮ້ານສວນໜັງສື
 </footer>
 </div>
 <!-- ./wrapper -->

@@ -27,6 +27,10 @@
         $znum = "0";
     }
 
+    // echo $fchar;
+    // echo $znum;
+    // echo $lnum;
+
     $autoID = $fchar.$znum.$lnum;
     $date = date("Y-m-d G:i:s");
     // echo '<br>';
@@ -188,7 +192,6 @@
                             <input type="text" name="change" id="change" class="form-control" value="" readonly> -->
                         </div>
                             <h3>ເງິນທອນ: <span class="box-change" id="change">0</span> ກີບ</h3>
-
                             <?php
                                 $sel = "SELECT * FROM tbcurrency";
                                 $result = mysqli_query($con, $sel) or die ("Error in query: $sel". mysqli_error($sel));
@@ -230,24 +233,35 @@
         document.getElementById("change").innerHTML= change;
     }
     function stopChange(){
-        var pay=document.getElementById("pay");
-        var total=document.getElementById("total");
+        // var pay=document.getElementById("pay").value;
+        // var total=document.getElementById("total").value;
 
-        if(pay == 0 || pay == null){
+        // if(pay == "0" || pay == null){
+        //     swal("ພິດພາດ", "ກະລຸນາປ້ອນຈຳນວນເງິນ", "error");
+        //     // alert(100000 < 75000)
+        //     event.preventDefault();
+        //     return false;
+        // }else if(pay < total){
+        //     swal("ພິດພາດ", "ກະລຸນາປ້ອນຈຳນວນເງິນໃຫ້ຄົບຖ້ວນ", "error");
+        //     // alert(pay < total);
+        //     // console.log("ຄ່າແມ່ນ:​ "+ pay +" < "+ total);
+        //     event.preventDefault();
+        //     return false;
+        // }
+        // return true;
+
+        let pay = document.forms["frmCart"]["pay"].value;
+        let change = document.forms["frmCart"]["total"].value;
+        if (pay == "" || pay == 0){
             swal("ພິດພາດ", "ກະລຸນາປ້ອນຈຳນວນເງິນ", "error");
-            // alert(100000 < 75000)
-            event.preventDefault();
             return false;
-        }else if(pay < total){
+        }else if(pay < change){
             swal("ພິດພາດ", "ກະລຸນາປ້ອນຈຳນວນເງິນໃຫ້ຄົບຖ້ວນ", "error");
-            alert(pay < total);
-            console.log("ຄ່າແມ່ນ:​ "+ pay +" < "+ total);
-            event.preventDefault();
             return false;
         }else{
-            alert("finnished")
+            
+            return true;
         }
-        return true;
     }
 </script>
 

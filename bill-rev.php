@@ -125,7 +125,6 @@
                 <div class="row">
                     <div class="col-md-12 mt-3 text-center">
                         <input type="submit" value="ບັນທຶກການຂາຍ" id="saveorder" name="saveorder" class="btn btn-success">
-                        <button type="submit" class="btn btn-primary" id="print" onclick="PrintDiv()"><i class="fas fa-print"></i> ພິມໃບບິນ</button>
                         <button class="btn btn-danger" id="goBack" name="goBack" onclick="goBack()">ກັບຄືນ</button>
                     </div>
                 </div>

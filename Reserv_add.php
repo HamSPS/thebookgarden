@@ -14,7 +14,7 @@
        //  echo $lnum;
    
         $fchar = "RS";
-        
+        $znum = "";
         if(strlen($lnum) == 1){
             $znum = "00000";
         }else if(strlen($lnum) == 2){
@@ -26,13 +26,25 @@
        }else{
            $znum = "0";
        }
-   
+
        //check id
        $chk = $fchar.$znum.$lnum;
        $ch_id = "SELECT * FROM tbreserv WHERE rsID = '$chk'";
        $qchk = mysqli_query($con, $ch_id);
        if ($row = mysqli_fetch_array($qchk) > 0) {
            $lnum +=1;
+           $znum = "";
+            if(strlen($lnum) == 1){
+                $znum = "00000";
+            }else if(strlen($lnum) == 2){
+                $znum = "0000";
+            }else if(strlen($lnum) == 3){
+            $znum = "000";
+            }else if(strlen($lnum) == 4){
+                $znum = "00";
+            }else{
+                $znum = "0";
+            }
            $autoID = $fchar.$znum.$lnum;
        }else{
            $autoID = $fchar.$znum.$lnum;
@@ -89,13 +101,9 @@
 ?>
 
 <div class="content">
-<?php 
-// echo $_SESSION['cusID'] .' : '. $_SESSION['cusName'];
-echo @$msg;
-?>
     <div class="container-fluid">
         <form action="?act=update" method="post">
-            <h5 class="alert alert-success">ເພີ່ນຂໍ້ມູນການຈອງ</h5>
+            <h5 class="alert alert-success text-center">ເພີ່ນຂໍ້ມູນການຈອງ</h5>
             <div class="row">
                 <div class="col-md-7">
                     <h1 class="text-center mb-3"><u>ລາຍການ</u></h1>
@@ -182,7 +190,7 @@ echo @$msg;
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <input type="button" name="btnCancel" value="ຍັກເລີກລາຍການສັ່ງຊື້" onclick="window.location='Reserv_add.php?act=cancel'" class="btn btn-warning">
+                            <input type="button" name="btnCancel" value="ຍົກເລີກລາຍການສັ່ງຊື້" onclick="window.location='Reserv_add.php?act=cancel'" class="btn btn-warning">
                             <input type="submit" name="editCart" id="editCart" value="ຄຳນວນລາຄາໃໝ່" class="btn btn-info">
                             <!-- <a href="rev_confirm.php" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> ຢືນຍັນ</a> -->
                             <!-- <input type="submit" class="btn btn-primary" name="rev" id="rev" value="ຢຶນຢັນ"> -->
@@ -191,39 +199,41 @@ echo @$msg;
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5" style="background: #d2d9d6">
+                <div class="col-md-5" style="background: #d2d9d6;">
                 <h5 class="mt-2">ເລືອກລາຍການ</h5>
-                    <table class="order-column" id="example" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>ລຳດັບ</th>
-                                <th>ຊື່ໜັງສື</th>
-                                <th>ລາຄາ</th>
-                                <th>ເພີ່ມ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php 
-                            $sql = "SELECT * FROM tbbook";
-                            $result = mysqli_query($con, $sql);
-                            $index = 0;
-                            while($row = mysqli_fetch_array($result)){
-                                $index++;
-                            ?>
-                            <tr>
-                                <td>
-                                    <?= $index ?>.
-                                    <input type="hidden" name="bkid" value="<?= $row['bkid'] ?>">
-                                </td>
-                                <td><?= $row['BkName'] ?></td>
-                                <td class="text-right"><?= number_format($row['price'],2) ?> ກີບ</td>
-                                <td>
-                                <a href="Reserv_add.php?b_id=<?= $row["Bkid"] ?>&act=add" class="btn btn-success">ເພີ່ມ</a>
-                                </td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                    <div style="height: 450px; overflow: scroll;">
+                        <table class="table table-bordered display bg-white" id="example" style="width:100%;">
+                            <thead>
+                                <tr>
+                                    <th>ລຳດັບ</th>
+                                    <th>ຊື່ໜັງສື</th>
+                                    <th>ລາຄາ</th>
+                                    <th>ເພີ່ມ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                                $sql = "SELECT * FROM tbbook";
+                                $result = mysqli_query($con, $sql);
+                                $index = 0;
+                                while($row = mysqli_fetch_array($result)){
+                                    $index++;
+                                ?>
+                                <tr>
+                                    <td>
+                                        <?= $index ?>.
+                                        <input type="hidden" name="bkid" value="<?= $row['bkid'] ?>">
+                                    </td>
+                                    <td><?= $row['BkName'] ?></td>
+                                    <td class="text-right"><?= number_format($row['price'],2) ?> ກີບ</td>
+                                    <td>
+                                    <a href="Reserv_add.php?b_id=<?= $row["Bkid"] ?>&act=add" class="btn btn-success">ເພີ່ມ</a>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </form>

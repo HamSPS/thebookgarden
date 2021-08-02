@@ -11,13 +11,13 @@
         if (isset($_POST['search'])) {
             $get = $_POST['date'];
             if ($get == "date") {
-                $sql = "SELECT DATE_FORMAT(imp_date, '%d/%M/%Y') AS imdate,sum(price) as total,sum(qty) as qty from tbimport im left JOIN import_detail id ON im.impid=id.impid GROUP BY DATE_FORMAT(imp_date, '%Y-%m-%d') LIMIT 30";   
+                $sql = "SELECT DATE_FORMAT(imp_date, '%d/%M/%Y') AS imdate,sum(price) as total,sum(qty) as qty from tbimport im left JOIN import_detail id ON im.impid=id.impid GROUP BY DATE_FORMAT(imp_date, '%Y-%m-%d') ORDER BY DATE_FORMAT(imp_date, '%Y-%m-%d') DESC LIMIT 30";   
             }
             if ($get == "month") {
-                $sql = "SELECT DATE_FORMAT(imp_date, '%M/%Y') AS imdate,sum(price) as total,sum(qty) as qty from tbimport im left JOIN import_detail id ON im.impid=id.impid GROUP BY DATE_FORMAT(imp_date, '%Y-%m') LIMIT 30";
+                $sql = "SELECT DATE_FORMAT(imp_date, '%M/%Y') AS imdate,sum(price) as total,sum(qty) as qty from tbimport im left JOIN import_detail id ON im.impid=id.impid GROUP BY DATE_FORMAT(imp_date, '%Y-%m') ORDER BY DATE_FORMAT(imp_date, '%Y-%m') DESC LIMIT 12";
             }
             if ($get == "year") {
-                $sql = "SELECT DATE_FORMAT(imp_date, '%Y') AS imdate,sum(price) as total,sum(qty) as qty from tbimport im left JOIN import_detail id ON im.impid=id.impid GROUP BY DATE_FORMAT(imp_date, '%Y') LIMIT 30";
+                $sql = "SELECT DATE_FORMAT(imp_date, '%Y') AS imdate,sum(price) as total,sum(qty) as qty from tbimport im left JOIN import_detail id ON im.impid=id.impid GROUP BY DATE_FORMAT(imp_date, '%Y') ORDER BY DATE_FORMAT(imp_date, '%Y') DESC LIMIT 12";
             }
         }
     ?>
@@ -40,7 +40,7 @@
             </div>
             <div class="col-md-4">
                 <select class="form-control" id="date" name="date">
-                    <option value="">----ເລືອກປະເພດ----</option>
+                    <option value="" disabled selected>----ເລືອກປະເພດ----</option>
                     <option value="date">ພີມລາຍງານຕາມວັນ</option>
                     <option value="month">ພີມລາຍງານຕາມເດືອນ</option>
                     <option value="year">ພີມລາຍງານຕາມປີ</option>

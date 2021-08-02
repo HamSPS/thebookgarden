@@ -73,6 +73,19 @@
     $qchk = mysqli_query($con, $ch_id);
     if ($row = mysqli_fetch_array($qchk) > 0) {
         $lnum +=1;
+
+        if(strlen($lnum) == 1){
+            $znum = "00000";
+        }else if(strlen($lnum) == 2){
+            $znum = "0000";
+        }else if(strlen($lnum) == 3){
+           $znum = "000";
+       }else if(strlen($lnum) == 4){
+           $znum = "00";
+       }else{
+           $znum = "0";
+       }
+
         $autoID = $fchar.$znum.$lnum;
     }else{
         $autoID = $fchar.$znum.$lnum;

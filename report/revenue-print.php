@@ -8,15 +8,15 @@
         if (isset($_GET['date'])) {
             $get = $_GET['date'];
             if ($get == "date") {
-                $sql = "SELECT DATE_FORMAT(sl_date, '%d/%M/%Y') AS sdate, sum(total_price) as sl_sum,sum(qty) as qty FROM tbsale s left JOIN sale_detail sd ON s.slID=sd.slID GROUP BY DATE_FORMAT(sl_date, '%Y-%m-%d') LIMIT 30";   
+                $sql = "SELECT DATE_FORMAT(sl_date, '%d/%M/%Y') AS sdate, sum(total_price) as sl_sum,sum(qty) as qty FROM tbsale s left JOIN sale_detail sd ON s.slID=sd.slID GROUP BY DATE_FORMAT(sl_date, '%Y-%m-%d') ORDER BY DATE_FORMAT(sl_date, '%Y-%m-%d') DESC LIMIT 30";   
                 $title = "ພີມລາຍງານລາຍຮັບຕາມວັນ";
             }
             if ($get == "month") {
-                $sql = "SELECT DATE_FORMAT(sl_date, '%M/%Y') AS sdate, sum(total_price) as sl_sum,sum(qty) as qty FROM tbsale s left JOIN sale_detail sd ON s.slID=sd.slID GROUP BY DATE_FORMAT(sl_date, '%Y-%m') LIMIT 30";
+                $sql = "SELECT DATE_FORMAT(sl_date, '%M/%Y') AS sdate, sum(total_price) as sl_sum,sum(qty) as qty FROM tbsale s left JOIN sale_detail sd ON s.slID=sd.slID GROUP BY DATE_FORMAT(sl_date, '%Y-%m') ORDER BY DATE_FORMAT(sl_date, '%Y-%m') DESC LIMIT 12";
                 $title = "ພີມລາຍງານລາຍຮັບຕາມເດືອນ";
             }
             if ($get == "year") {
-                $sql = "SELECT DATE_FORMAT(sl_date, '%Y') AS sdate, sum(total_price) as sl_sum,sum(qty) as qty FROM tbsale s left JOIN sale_detail sd ON s.slID=sd.slID GROUP BY DATE_FORMAT(sl_date, '%Y') LIMIT 30";
+                $sql = "SELECT DATE_FORMAT(sl_date, '%Y') AS sdate, sum(total_price) as sl_sum,sum(qty) as qty FROM tbsale s left JOIN sale_detail sd ON s.slID=sd.slID GROUP BY DATE_FORMAT(sl_date, '%Y') ORDER BY DATE_FORMAT(sl_date, '%Y') DESC LIMIT 12";
                 $title = "ພີມລາຍງານລາຍຮັບຕາມປີ";
             }
         }

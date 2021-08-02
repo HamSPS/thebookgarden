@@ -53,7 +53,7 @@
 
         <div class="table-responsive">
             <table id="example" class="table table-hover table-bordered" style="width:100%">
-                <thead style="background-color: beige; text-align: center">
+                <thead class="table-success text-center">
                     <tr>
                         <th>ລຳດັບ</th>
                         <th>ລະຫັດປະເພດ</th>
@@ -78,7 +78,7 @@
                                 data-target="#modalUpdate"><i class="fas fa-edit" style="color: green"></i></a> |
                             <a href="#" onclick="deletedata(<?php echo "'" . $row['catID'] . "'"; ?>)"
                                 data-toggle="tooltip" data-placement="left" title="ລືບ"><i class="fas fa-trash-alt"
-                                    style="color: red"></i> ລົບ</a>
+                                    style="color: red"></i></a>
                         </td>
                     </tr>
                     <?php

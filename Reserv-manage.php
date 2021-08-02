@@ -60,9 +60,11 @@
                         <td><?= $row['revDate'] ?></td>
                         <td><?= $row['sts_name'] ?></td>
                         <td>
-                            <a href="bill-rev.php?revID=<?= $row['rsID'] ?>" class="btn btn-info"><i class="fas fa-shopping-cart"></i> ຂາຍ</a>
+                            <a href="bill-rev.php?revID=<?= $row['rsID'] ?>" class="btn btn-outline-info fas fa-shopping-cart"></a>
                             |
-                            <a href="#" onclick="deletedata(<?php echo "'" . $row['rsID'] . "'"; ?>)" class="btn btn-danger" data-toggle="tooltip" data-placement="left" title="ລືບ"><i class="fas fa-trash-alt"></i> ລົບ</a>
+                            <a href="report/rev-bill-print.php?revID=<?= $row['rsID'] ?>" class="btn btn-outline-success fa fa-print" target="_black"></a>
+                            |
+                            <a href="#" onclick="deletedata(<?= $row['rsID'] ?>)" class="btn btn-outline-danger fas fa-trash-alt" data-toggle="tooltip" data-placement="left" title="ລືບ"></a>
                         </td>
                     </tr>
                     <?php } ?>
